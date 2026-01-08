@@ -67,9 +67,9 @@ jobs:
             key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json')}}
             restore-keys: |
               ${{ runner.os }}-npm-
-                
+
         - name: Install Dependency
-          run: npm install 
+          run: npm ci
 
         - name: Check code coverage
           continue-on-error: true
