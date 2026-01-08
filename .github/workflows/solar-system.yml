@@ -35,15 +35,13 @@ jobs:
           if: always()
           uses: actions/upload-artifact@v6
           with:
-            name: Mocha-Test-Result-${{ matrix.os }}-node-${{ matrix.nodejs-version }}
+            name: Mocha-Test-Result
             path: test-results.xml
 
     code-coverage:
       needs: unit-testing
       name: code Coverage
       runs-on: ubuntu-latest
-      
-
       steps:
         - name: Checkout Repo
           uses: actions/checkout@v4
