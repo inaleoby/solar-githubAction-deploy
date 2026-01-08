@@ -84,7 +84,7 @@ jobs:
     Docker:
       needs: code-coverage
       name: Conteneurisation
-      runs-on: ubutu-latest
+      runs-on: ubuntu-latest
       steps:
         - name: Checkout
           uses: actions/checkout@v4
