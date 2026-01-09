@@ -1,5 +1,7 @@
 name: Solar System Workflow
 
+
+
 on: 
   workflow_dispatch:
   push:
@@ -14,12 +16,12 @@ env:
 jobs:
     unit-testing:
         name: Unit Testing
-        services:
+        services: # permet d'avoir un container mongo comme BDD pour les test (on ne plus sur la DB de prod)
           mongo-db:
-            image: siddhart67/mongo-db:non-prd
+            image: siddharth67/mongo-db:non-prd
             ports:
               - 27017:27017
-        env:
+        env: # definir les identidaint de test pour la DBB mongo de test 
           MONGO_URI: 'mongodb://localhost:27017/superData'
           MONGO_USERNAME: non-prod-user
           MONGO_PASSWORD: non-prod-password
