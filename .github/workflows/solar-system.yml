@@ -18,7 +18,7 @@ jobs:
         name: Unit Testing
         services: # permet d'avoir un container mongo comme BDD pour les test (on ne plus sur la DB de prod)
           mongo-db:
-            image: siddharth67/mongo-db:non-prd
+            image: siddharth67/mongo-db:non-prod
             ports:
               - 27017:27017
         env: # definir les identidaint de test pour la DBB mongo de test 
