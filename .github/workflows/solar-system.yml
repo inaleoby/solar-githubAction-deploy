@@ -63,14 +63,26 @@ jobs:
       needs: unit-testing
       name: code Coverage
       runs-on: ubuntu-latest
+      container: 
+        image: node:18
+      services: # permet d'avoir un container mongo comme BDD pour les test (on ne plus sur la DB de prod)
+          mongo-db:
+            image: siddharth67/mongo-db:non-prod # c'est une image deja cuztomisé
+            options:
+              --name mongodb
+
+      env: # definir les identidaint de test pour la DBB mongo de test 
+          MONGO_URI: 'mongodb://mongodb:27017/superData' # mongodb://mongo-db:27017/superData ou le nom de service place de localhost
+          MONGO_USERNAME: non-prod-user
+          MONGO_PASSWORD: non-prod-password
       steps:
         - name: Checkout Repo
           uses: actions/checkout@v4
 
-        - name: Setup Node JS
-          uses: actions/setup-node@v3
-          with:
-            node-version: 18
+        #- name: Setup Node JS
+        #  uses: actions/setup-node@v3
+        # with:
+        #    node-version: 18
 
         - name: Cache NPM Dependencies
           uses: actions/cache@v3
